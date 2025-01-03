@@ -16,13 +16,13 @@ const MobileMenu = ({ menu }: { menu: MenuType[] }) => {
       <button
         onClick={toggleOpen}
         aria-label='Open mobile menu'
-        className='flex h-11 w-11 items-center justify-center rounded-md border border-neutral-200 text-black transition-colors md:hidden dark:border-neutral-700 dark:text-white'
+        className='flex h-11 w-11 items-center justify-center rounded-md border border-neutral-200 text-black transition-colors lg:hidden dark:border-neutral-700 dark:text-white'
       >
         <MenuIcon className='h-8 w-8' />
       </button>
 
       <Transition show={isOpen}>
-        <Dialog onClose={toggleOpen} className='relative z-50'>
+        <Dialog onClose={toggleOpen} className='relative z-50 lg:hidden'>
           <TransitionChild
             as={Fragment}
             enter='transition-all ease-in-out duration-300'
@@ -43,7 +43,7 @@ const MobileMenu = ({ menu }: { menu: MenuType[] }) => {
             leaveFrom='translate-x-0'
             leaveTo='translate-x-[100%]' // Changed from -100% to 100%
           >
-            <DialogPanel className='fixed bottom-0 right-0 top-0 flex h-full w-full sm:w-[70%] flex-col bg-white pb-6 dark:bg-black'>
+            <DialogPanel className='fixed bottom-0 right-0 top-0 flex h-full w-full sm:w-[40%] md:w-1/3 flex-col bg-white pb-6 dark:bg-black'>
               <div className='p-4 flex flex-col'>
                 <div className='flex justify-end mb-4'>
                   <button

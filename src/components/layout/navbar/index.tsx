@@ -16,10 +16,10 @@ async function Navbar() {
         <div className='flex w-full md:w-1/3'>
           <Link href={'/'} prefetch={true} className='mr-2 flex w-full items-center justify-start md:w-auto lg:mr-6'>
             <Logo />
-            <div className='ml-2 flex-none text-sm font-medium uppercase md:hidden lg'>{siteName}</div>
+            <div className='ml-2 flex-none text-sm font-medium uppercase lg:hidden'>{siteName}</div>
           </Link>
           {menu.length > 0 ? (
-            <ul className='hidden gap-6 text-sm md:flex md:items-center'>
+            <ul className='hidden gap-6 text-sm lg:flex md:items-center'>
               {menu.map((item: Menu) => (
                 <li key={item.title}>
                   <Link
@@ -34,12 +34,12 @@ async function Navbar() {
             </ul>
           ) : null}
         </div>
-        <div className='hidden justify-center md:flex md:w-1/3'>
+        <div className='hidden justify-center lg:flex md:w-1/3'>
           <SearchBar />
         </div>
         <div>{/* <CartModal /> */}</div>
       </div>
-      <div className='block flex-none md:hidden'>
+      <div className='block flex-none lg:hidden'>
         <MobileMenu menu={menu} />
       </div>
     </nav>
