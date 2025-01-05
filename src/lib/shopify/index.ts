@@ -2,7 +2,7 @@ import { SHOPIFY_GRAPHQL_API_ENDPOINT, TAGS } from "../constant";
 import { isShopifyError } from "../type-guards";
 import { ensureStartWith } from "../utils";
 import { getMenuQuery } from "./queries/menu";
-import { Menu, ShopifyMenuOperation } from "./types";
+import { Menu, ShopifyMenuItem, ShopifyMenuOperation } from "./types";
 
 const domain = process.env.SHOPIFY_STORE_DOMAIN ? ensureStartWith(process.env.SHOPIFY_STORE_DOMAIN, 'https://') : "";
 const endpoint = `${domain}${SHOPIFY_GRAPHQL_API_ENDPOINT}`;
@@ -76,15 +76,13 @@ export const getMenu = async (handle: string): Promise<Menu[]> => {
       handle,
     },
   });
+  // console.log('MENU RES', res.body.data.menu.items);
+  const processMenuItem = (item: ShopifyMenuItem): Menu => ({
+    title: item.title,
+    path: item.url.replace(domain, '').replace('/collections', '/search').replace('/pages', ''),
+    ...(item.items && { items: item.items.map(processMenuItem) }),
+  });
 
-  return (
-      res.body?.data?.menu?.items.map((item: { title: string; url: string }) => ({
-      title: item.title,
-      path: item.url
-        .replace(domain, '')
-        .replace('/collections', '/search')
-        .replace('/pages', ''),
-    })) || []
-  );
+  return res.body?.data?.menu?.items.map(processMenuItem) || [];
 
 };
