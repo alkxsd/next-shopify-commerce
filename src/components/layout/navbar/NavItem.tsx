@@ -50,7 +50,7 @@ const NavItem = ({ item }: { item: Menu }) => {
         leaveTo='transform opacity-0 translate-y-4'
       >
         <div className='absolute top-full z-50 min-w-full md:min-w-[10rem] left-1/2 -translate-x-1/2 translate-y-4 overflow-hidden'>
-          <div className='flex gap-12 items-start justify-center bg-white dark:bg-black w-[200vw] pb-4'>
+          <div className='flex gap-12 items-start justify-center bg-white dark:bg-gray-900 w-[200vw] pb-4 border-b dark:border-gray-400'>
             <div className='flex gap-4 items-center flex-col mt-2'>
               {item.items.map((subItem) => (
                 <Link
