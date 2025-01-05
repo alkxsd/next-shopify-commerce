@@ -1,6 +1,7 @@
 import MobileMenu from '@/components/layout/navbar/MobileMenu';
 import SearchBar from '@/components/layout/navbar/SearchBar';
 import LogoSquare from '@/components/LogoSquare';
+import ThemeSwitch from '@/components/ThemeSwitch';
 import { getMenu } from "@/lib/shopify";
 import { Menu } from "@/lib/shopify/types";
 import Link from "next/link";
@@ -33,6 +34,7 @@ const Navbar = async () => {
             <SearchBar />
           </div>
           <div>{/* <CartModal /> */}</div>
+          <ThemeSwitch />
         </div>
       </div>
       <div className='block flex-none xl:hidden'>

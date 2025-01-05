@@ -1,9 +1,10 @@
 /* eslint-disable @typescript-eslint/no-require-imports */
 const plugin = require('tailwindcss/plugin');
 
-/** @type {import('tailwindcss').config} */
+/** @type {import('tailwindcss').Config} */
 
 module.exports = {
+  darkMode: 'class',
   content: [
     './src/pages/**/*.{js,ts,jsx,tsx,mdx}',
     './src/components/**/*.{js,ts,jsx,tsx,mdx}',
