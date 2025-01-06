@@ -12,7 +12,7 @@ const Navbar = async () => {
   const siteName = process.env.SITE_NAME || 'Shopping';
 
   return (
-    <nav className='relative flex items-center justify-between p-4 lg:px-6'>
+    <nav className='relative flex items-center justify-between p-4 lg:px-6 bg-white dark:bg-gray-900'>
       <div className='flex w-full items-center justify-between'>
         <div className='flex items-center'>
           <Link href={'/'} prefetch={true} className='mr-6 flex items-center'>

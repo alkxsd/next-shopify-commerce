@@ -29,7 +29,7 @@ export default function RootLayout({
     <html lang='en'>
       <body className={`${geistSans.variable} ${geistMono.variable} antialiased`}>
         <ThemeProvider>
-          <div className="min-h-screen bg-white text-gray-900 transition-colors dark:bg-gray-900 dark:text-gray-100">
+          <div className='min-h-screen bg-neutral-100 text-gray-900 transition-colors dark:bg-neutral-900 dark:text-gray-100'>
             <Navbar />
             {children}
             <Footer />
