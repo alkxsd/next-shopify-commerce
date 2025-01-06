@@ -1,8 +1,9 @@
 import { SHOPIFY_GRAPHQL_API_ENDPOINT, TAGS } from "../constant";
 import { isShopifyError } from "../type-guards";
 import { ensureStartWith } from "../utils";
+import { getHeroBannerQuery } from "./queries/hero-banner";
 import { getMenuQuery } from "./queries/menu";
-import { Menu, ShopifyMenuItem, ShopifyMenuOperation } from "./types";
+import { HeroBannerType, Menu, ShopifyHeroBannerOperation, ShopifyMenuItem, ShopifyMenuOperation } from "./types";
 
 const domain = process.env.SHOPIFY_STORE_DOMAIN ? ensureStartWith(process.env.SHOPIFY_STORE_DOMAIN, 'https://') : "";
 const endpoint = `${domain}${SHOPIFY_GRAPHQL_API_ENDPOINT}`;
@@ -84,5 +85,31 @@ export const getMenu = async (handle: string): Promise<Menu[]> => {
   });
 
   return res.body?.data?.menu?.items.map(processMenuItem) || [];
+};
 
+// getHeroBanner function
+export const getHeroBanner = async (handle: string): Promise<HeroBannerType | null> => {
+  const res = await shopifyFetch<ShopifyHeroBannerOperation>({
+    query: getHeroBannerQuery,
+    variables: { handle },
+    cache: 'no-store',
+  });
+
+  const fields = res.body.data.metaobject?.fields;
+  if (!fields) return null;
+  return {
+    id: fields.find(f => f.key === 'id')?.value || '',
+    title: fields.find(f => f.key === 'title')?.value || '',
+    subtitle: fields.find(f => f.key === 'subtitle')?.value || '',
+    features: JSON.parse(fields.find(f => f.key === 'features')?.value || '[]'),
+    buttonText: fields.find(f => f.key === 'button_text')?.value || '',
+    buttonUrl: fields.find(f => f.key === 'button_url')?.value || '',
+    backgroundColor: fields.find(f => f.key === 'background_color')?.value || '',
+    image: {
+      url: fields.find(f => f.key === 'image')?.reference?.image?.url || '',
+      altText: fields.find(f => f.key === 'image')?.reference?.image?.altText || '',
+      width: fields.find(f => f.key === 'image')?.reference?.image?.width || 0,
+      height: fields.find(f => f.key === 'image')?.reference?.image?.height || 0,
+    }
+  };
 };

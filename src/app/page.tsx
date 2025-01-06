@@ -1,3 +1,5 @@
+import HeroBanner from '@/components/HeroBanner';
+import { getHeroBanner } from '@/lib/shopify';
 import Image from 'next/image';
 import Link from 'next/link';
 
@@ -8,58 +10,13 @@ export const metadata = {
   },
 };
 
-export default function Home() {
+export default async function Home() {
+  const banner = await getHeroBanner('hero-banner');
+
   return (
     <main className='flex-1'>
-      <section className='w-full pt-12 md:pt-24 lg:pt-32 border-bottom-b'>
-        <div className='px-4 md:px-6 space-y-10 xl:space-y-16'>
-          <div className='grid max-w-[1300px] mx-auto gap-4 px-4 sm:px-6 md:px-10 md:grid-cols-2 md:gap-16'>
-            {/* Hero content */}
-            <div>
-              <h1 className='lg:leading-tighter text-3xl font-bold tracking-tighter sm:text-4xl md:text-5xl xl:text-[3.4rem] 2xl:text-[3.75rem]'>
-                Discover the Latest Fashion Trends
-              </h1>
-            </div>
-            <div className='flex flex-col items-start space-y-4'>
-              <p className='mx-auto max-w-[700px] text-muted-foreground md:text-xl'>
-                Explore our curated collections of stylish apparel and accessories for every occasion.
-              </p>
-              <div className='flex flex-col w-full md:flex-row gap-2 text-nowrap'>
-                {/* CTA buttons */}
-                <Link
-                  href='/search/womens-collection'
-                  className='inline-flex h-9 items-center justify-center rounded-md border bg-primary px-4 py-2 text-sm font-medium text-primary-foreground shadow transition-colors hover:bg-primary/90 focus-visible:outline-none focus-visible:ring-1 focus-visible:ring-ring disabled:pointer-events-none disabled:opacity-50'
-                  prefetch={false}
-                >
-                  Shop Women
-                </Link>
-                <Link
-                  href='/search/mens-collection'
-                  className='inline-flex h-9 items-center justify-center rounded-md border border-input bg-background px-4 py-2 text-sm font-medium shadow-sm transition-colors hover:bg-accent hover:text-accent-foreground focus-visible:outline-none focus-visible:ring-1 focus-visible:ring-ring disabled:pointer-events-none disabled:opacity-50'
-                  prefetch={false}
-                >
-                  Shop Men
-                </Link>
-                <Link
-                  href='/search/sales'
-                  className='inline-flex h-9 items-center justify-center rounded-md border border-red-300 border-input bg-background px-4 py-2 text-sm font-medium shadow-sm transition-colors hover:bg-red-300 hover:text-accent-foreground focus-visible:outline-none focus-visible:ring-1 focus-visible:ring-ring disabled:pointer-events-none disabled:opacity-50'
-                  prefetch={false}
-                >
-                  Shop Sales
-                </Link>
-              </div>
-            </div>
-          </div>
-          <Image
-            src='/banner.png'
-            width={1270}
-            height={300}
-            alt='Hero'
-            className='mx-auto rounded-t-xl object-cover'
-            priority
-          />
-        </div>
-      </section>
+      {/* Herro Banner section */}
+      {banner && <HeroBanner {...banner} />}
       <section className='w-full py-12 md:py-24 lg:py-32 grid place-content-center'>
         <div className='container space-y-12 px-4 md:px-6'>
           <div className='flex flex-col items-center justify-center space-y-4 text-center'>

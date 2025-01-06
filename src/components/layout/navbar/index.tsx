@@ -21,7 +21,7 @@ const Navbar = async () => {
           </Link>
           {menu.length > 0 ? (
             <div className='hidden lg:block flex-1 z-50'>
-              <div className='flex gap-10 items-end items-center'>
+              <div className='flex gap-10 items-center'>
                 {menu.map((item: Menu) => (
                   <NavItem key={item.title} item={item} />
                 ))}
