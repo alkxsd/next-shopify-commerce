@@ -1,26 +1,23 @@
+// src/lib/shopify/types.ts
 export type Menu = {
   title: string;
   path: string;
-  items?: Menu[]; // Add support for nested items
+  items?: Menu[];
 };
 
 export type ShopifyMenuItem = {
+  __typename: 'MenuItem';
   title: string;
   url: string;
-  items?: ShopifyMenuItem[]; // Shopify's nested items
+  items: ShopifyMenuItem[];
 };
 
 export type ShopifyMenuOperation = {
-  data: {
-    menu?: {
-      items: ShopifyMenuItem[];
-    };
-  };
-  variables: {
-    handle: string;
+  menu: {
+    __typename: 'Menu';
+    items: ShopifyMenuItem[];
   };
 };
-
 export type HeroBannerType = {
   id: string;
   title: string;

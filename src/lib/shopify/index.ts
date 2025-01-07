@@ -1,3 +1,4 @@
+// src/lib/shopify/index.ts
 import { SHOPIFY_GRAPHQL_API_ENDPOINT, TAGS } from "../constant";
 import { isShopifyError } from "../type-guards";
 import { ensureStartWith } from "../utils";

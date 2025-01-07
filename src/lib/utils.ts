@@ -10,3 +10,7 @@ export function createUrl(pathname: string, params: URLSearchParams | ReadonlyUR
 
   return `${pathname}${queryString}`;
 }
+
+export function getDomain () {
+  return process.env.SHOPIFY_STORE_DOMAIN ? ensureStartWith(process.env.SHOPIFY_STORE_DOMAIN, 'https://') : "";
+}

@@ -1,3 +1,4 @@
+import { ApolloWrapper } from "@/components/apollo-wrapper";
 import Footer from "@/components/layout/Footer";
 import Navbar from "@/components/layout/navbar";
 import ThemeProvider from "@/components/theme-provider";
@@ -29,11 +30,13 @@ export default function RootLayout({
     <html lang='en'>
       <body className={`${geistSans.variable} ${geistMono.variable} antialiased`}>
         <ThemeProvider>
-          <div className='min-h-screen bg-neutral-100 text-gray-900 transition-colors dark:bg-neutral-900 dark:text-gray-100'>
-            <Navbar />
-            {children}
-            <Footer />
-          </div>
+          <ApolloWrapper>
+            <div className='min-h-screen bg-neutral-100 text-gray-900 transition-colors dark:bg-neutral-900 dark:text-gray-100'>
+              <Navbar />
+              {children}
+              <Footer />
+            </div>
+          </ApolloWrapper>
         </ThemeProvider>
       </body>
     </html>
