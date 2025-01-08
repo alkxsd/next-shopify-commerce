@@ -1,5 +1,5 @@
 import HeroBanner from '@/components/HeroBanner';
-import { getHeroBanner } from '@/lib/shopify';
+import { getHeroBanner } from '@/lib/apollo/utils';
 import Image from 'next/image';
 import Link from 'next/link';
 

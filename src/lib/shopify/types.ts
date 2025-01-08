@@ -35,23 +35,18 @@ export type HeroBannerType = {
 };
 
 export type ShopifyHeroBannerOperation = {
-  data: {
-    metaobject: {
-      fields: {
-        key: string;
-        value: string;
-        reference: {
-          image?: {
-            url: string;
-            altText: string;
-            width: number;
-            height: number;
-          };
-        } | null;
-      }[];
-    };
-  };
-  variables: {
-    handle: string;
-  };
+  metaobject: {
+    fields: {
+      key: string;
+      value: string;
+      reference: {
+        image?: {
+          url: string;
+          altText: string;
+          width: number;
+          height: number;
+        };
+      } | null;
+    }[];
+  } | null;
 };

@@ -18,7 +18,7 @@ interface HeroBannerProps {
   backgroundColor: string; // Make this required to match HeroBannerType
 }
 
-const HeroBanner = ({ title, subtitle, features, buttonText, buttonUrl, image, backgroundColor }: HeroBannerProps) => {
+const HeroBanner = ({ title, subtitle, features, buttonText, buttonUrl, image }: HeroBannerProps) => {
   return (
     <section className='py-8 sm:py-12 w-full overflow-hidden'>
       <div className='container mx-auto px-4 w-full'>

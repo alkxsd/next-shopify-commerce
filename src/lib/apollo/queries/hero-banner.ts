@@ -1,6 +1,7 @@
-// src/lib/shopify/queries/hero-banner.ts
-export const getHeroBannerQuery = /* GraphQL */ `
-  query getHeroBanner($handle: String!) {
+import { gql } from '@apollo/client';
+
+export const GET_HERO_BANNER = gql`
+  query GetHeroBanner($handle: String!) {
     metaobject(handle: { handle: $handle, type: "hero_banner" }) {
       fields {
         key
